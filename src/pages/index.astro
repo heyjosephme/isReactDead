@@ -1,11 +1,60 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-	<Welcome />
+  <main
+    class="relative min-h-screen w-full flex flex-col items-center justify-center bg-[#61dafb] overflow-hidden"
+  >
+    <!-- SVG Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern
+            id="grid"
+            width="40"
+            height="40"
+            patternUnits="userSpaceOnUse"
+          >
+            <path
+              d="M 40 0 L 0 0 0 40"
+              fill="none"
+              stroke="white"
+              stroke-width="1"></path>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)"></rect>
+      </svg>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10 text-center px-4">
+      <h1 class="text-white text-7xl md:text-9xl font-bold mb-8 drop-shadow-lg">
+        Is React Dead?
+      </h1>
+      <p class="text-white text-8xl md:text-[12rem] font-bold drop-shadow-lg">
+        No
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <footer
+      class="absolute bottom-8 text-center text-white text-sm md:text-base"
+    >
+      <p class="drop-shadow">
+        Built with <a
+          href="https://astro.build"
+          class="underline hover:no-underline"
+          target="_blank"
+          rel="noopener noreferrer">Astro</a
+        > &
+        <a
+          href="https://react.dev"
+          class="underline hover:no-underline"
+          target="_blank"
+          rel="noopener noreferrer">React</a
+        > (just kidding, no React here... yet)
+      </p>
+    </footer>
+  </main>
 </Layout>
