@@ -1,0 +1,108 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// Fetch npm download stats (last 30 days)
+const npmResponse = await fetch(
+  "https://api.npmjs.org/downloads/point/last-month/react"
+);
+const npmData = await npmResponse.json();
+
+// Fetch GitHub repo stats
+const githubResponse = await fetch(
+  "https://api.github.com/repos/facebook/react"
+);
+const githubData = await githubResponse.json();
+
+// Format numbers with commas
+const formatNumber = (num: number) => num.toLocaleString("en-US");
+---
+
+<Layout>
+  <main
+    class="relative min-h-screen w-full bg-[#61dafb] overflow-hidden py-16 px-4"
+  >
+    <!-- SVG Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern
+            id="grid"
+            width="40"
+            height="40"
+            patternUnits="userSpaceOnUse"
+          >
+            <path
+              d="M 40 0 L 0 0 0 40"
+              fill="none"
+              stroke="white"
+              stroke-width="1"></path>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)"></rect>
+      </svg>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-4xl mx-auto">
+      <header class="text-center mb-12">
+        <h1
+          class="text-white text-5xl md:text-7xl font-bold mb-4 drop-shadow-lg"
+        >
+          The Evidence
+        </h1>
+        <p class="text-white text-xl md:text-2xl drop-shadow">
+          Still think React is dead? Let the numbers speak.
+        </p>
+      </header>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- NPM Downloads Card -->
+        <div class="bg-white/90 backdrop-blur rounded-lg p-8 shadow-xl">
+          <h2 class="text-2xl font-bold text-gray-800 mb-2">NPM Downloads</h2>
+          <p class="text-gray-600 text-sm mb-4">Last 30 days</p>
+          <p class="text-5xl font-bold text-[#61dafb]">
+            {formatNumber(npmData.downloads)}
+          </p>
+        </div>
+
+        <!-- GitHub Stars Card -->
+        <div class="bg-white/90 backdrop-blur rounded-lg p-8 shadow-xl">
+          <h2 class="text-2xl font-bold text-gray-800 mb-2">GitHub Stars</h2>
+          <p class="text-gray-600 text-sm mb-4">Total stars</p>
+          <p class="text-5xl font-bold text-[#61dafb]">
+            {formatNumber(githubData.stargazers_count)}
+          </p>
+        </div>
+
+        <!-- GitHub Forks Card -->
+        <div class="bg-white/90 backdrop-blur rounded-lg p-8 shadow-xl">
+          <h2 class="text-2xl font-bold text-gray-800 mb-2">GitHub Forks</h2>
+          <p class="text-gray-600 text-sm mb-4">Total forks</p>
+          <p class="text-5xl font-bold text-[#61dafb]">
+            {formatNumber(githubData.forks_count)}
+          </p>
+        </div>
+
+        <!-- Open Issues Card -->
+        <div class="bg-white/90 backdrop-blur rounded-lg p-8 shadow-xl">
+          <h2 class="text-2xl font-bold text-gray-800 mb-2">Open Issues</h2>
+          <p class="text-gray-600 text-sm mb-4">Active discussions</p>
+          <p class="text-5xl font-bold text-[#61dafb]">
+            {formatNumber(githubData.open_issues_count)}
+          </p>
+        </div>
+      </div>
+
+      <!-- Back Link -->
+      <div class="text-center mt-12">
+        <a
+          href="/"
+          class="inline-block text-white text-lg underline hover:no-underline drop-shadow"
+        >
+          ← Back to the answer
+        </a>
+      </div>
+    </div>
+  </main>
+</Layout>
