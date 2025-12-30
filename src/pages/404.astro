@@ -1,0 +1,51 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <main
+    class="relative min-h-screen w-full flex flex-col items-center justify-center bg-[#0a192f] overflow-hidden"
+  >
+    <!-- SVG Background Pattern -->
+    <div class="absolute inset-0 opacity-5">
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern
+            id="grid"
+            width="40"
+            height="40"
+            patternUnits="userSpaceOnUse"
+          >
+            <path
+              d="M 40 0 L 0 0 0 40"
+              fill="none"
+              stroke="#61dafb"
+              stroke-width="1"></path>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)"></rect>
+      </svg>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10 text-center px-4">
+      <h1 class="text-[#61dafb] text-9xl md:text-[12rem] font-bold mb-4 drop-shadow-lg">
+        404
+      </h1>
+      <p class="text-white text-3xl md:text-5xl font-bold mb-8 drop-shadow-lg">
+        This page is dead.
+      </p>
+      <p class="text-gray-400 text-xl md:text-2xl mb-12 drop-shadow">
+        Unlike React.
+      </p>
+      <div>
+        <a
+          href="/"
+          class="inline-block text-[#61dafb] text-xl md:text-2xl underline hover:no-underline drop-shadow-lg transition-opacity hover:opacity-80"
+        >
+          ← Go back home
+        </a>
+      </div>
+    </div>
+  </main>
+</Layout>
