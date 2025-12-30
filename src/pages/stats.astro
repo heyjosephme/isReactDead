@@ -3,13 +3,13 @@ import Layout from "../layouts/Layout.astro";
 
 // Fetch npm download stats (last 30 days)
 const npmResponse = await fetch(
-  "https://api.npmjs.org/downloads/point/last-month/react"
+	"https://api.npmjs.org/downloads/point/last-month/react",
 );
 const npmData = await npmResponse.json();
 
 // Fetch GitHub repo stats
 const githubResponse = await fetch(
-  "https://api.github.com/repos/facebook/react"
+	"https://api.github.com/repos/facebook/react",
 );
 const githubData = await githubResponse.json();
 
@@ -19,10 +19,10 @@ const formatNumber = (num: number) => num.toLocaleString("en-US");
 
 <Layout>
   <main
-    class="relative min-h-screen w-full bg-[#61dafb] overflow-hidden py-16 px-4"
+    class="relative min-h-screen w-full bg-[#0a192f] overflow-hidden py-16 px-4"
   >
     <!-- SVG Background Pattern -->
-    <div class="absolute inset-0 opacity-10">
+    <div class="absolute inset-0 opacity-5">
       <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern
@@ -34,7 +34,7 @@ const formatNumber = (num: number) => num.toLocaleString("en-US");
             <path
               d="M 40 0 L 0 0 0 40"
               fill="none"
-              stroke="white"
+              stroke="#61dafb"
               stroke-width="1"></path>
           </pattern>
         </defs>
@@ -58,36 +58,36 @@ const formatNumber = (num: number) => num.toLocaleString("en-US");
       <!-- Stats Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- NPM Downloads Card -->
-        <div class="bg-white/90 backdrop-blur rounded-lg p-8 shadow-xl">
-          <h2 class="text-2xl font-bold text-gray-800 mb-2">NPM Downloads</h2>
-          <p class="text-gray-600 text-sm mb-4">Last 30 days</p>
+        <div class="bg-[#112240] border border-[#61dafb]/20 rounded-lg p-8 shadow-xl hover:border-[#61dafb]/40 transition-colors">
+          <h2 class="text-2xl font-bold text-white mb-2">NPM Downloads</h2>
+          <p class="text-gray-400 text-sm mb-4">Last 30 days</p>
           <p class="text-5xl font-bold text-[#61dafb]">
             {formatNumber(npmData.downloads)}
           </p>
         </div>
 
         <!-- GitHub Stars Card -->
-        <div class="bg-white/90 backdrop-blur rounded-lg p-8 shadow-xl">
-          <h2 class="text-2xl font-bold text-gray-800 mb-2">GitHub Stars</h2>
-          <p class="text-gray-600 text-sm mb-4">Total stars</p>
+        <div class="bg-[#112240] border border-[#61dafb]/20 rounded-lg p-8 shadow-xl hover:border-[#61dafb]/40 transition-colors">
+          <h2 class="text-2xl font-bold text-white mb-2">GitHub Stars</h2>
+          <p class="text-gray-400 text-sm mb-4">Total stars</p>
           <p class="text-5xl font-bold text-[#61dafb]">
             {formatNumber(githubData.stargazers_count)}
           </p>
         </div>
 
         <!-- GitHub Forks Card -->
-        <div class="bg-white/90 backdrop-blur rounded-lg p-8 shadow-xl">
-          <h2 class="text-2xl font-bold text-gray-800 mb-2">GitHub Forks</h2>
-          <p class="text-gray-600 text-sm mb-4">Total forks</p>
+        <div class="bg-[#112240] border border-[#61dafb]/20 rounded-lg p-8 shadow-xl hover:border-[#61dafb]/40 transition-colors">
+          <h2 class="text-2xl font-bold text-white mb-2">GitHub Forks</h2>
+          <p class="text-gray-400 text-sm mb-4">Total forks</p>
           <p class="text-5xl font-bold text-[#61dafb]">
             {formatNumber(githubData.forks_count)}
           </p>
         </div>
 
         <!-- Open Issues Card -->
-        <div class="bg-white/90 backdrop-blur rounded-lg p-8 shadow-xl">
-          <h2 class="text-2xl font-bold text-gray-800 mb-2">Open Issues</h2>
-          <p class="text-gray-600 text-sm mb-4">Active discussions</p>
+        <div class="bg-[#112240] border border-[#61dafb]/20 rounded-lg p-8 shadow-xl hover:border-[#61dafb]/40 transition-colors">
+          <h2 class="text-2xl font-bold text-white mb-2">Open Issues</h2>
+          <p class="text-gray-400 text-sm mb-4">Active discussions</p>
           <p class="text-5xl font-bold text-[#61dafb]">
             {formatNumber(githubData.open_issues_count)}
           </p>
@@ -99,7 +99,7 @@ const formatNumber = (num: number) => num.toLocaleString("en-US");
         <div>
           <a
             href="/"
-            class="inline-block text-white text-lg underline hover:no-underline drop-shadow"
+            class="inline-block text-[#61dafb] text-lg underline hover:no-underline drop-shadow-lg transition-opacity hover:opacity-80"
           >
             ← Back to the answer
           </a>
@@ -107,7 +107,7 @@ const formatNumber = (num: number) => num.toLocaleString("en-US");
         <div>
           <a
             href="/about"
-            class="inline-block text-white text-base underline hover:no-underline drop-shadow"
+            class="inline-block text-gray-400 text-base underline hover:text-[#61dafb] hover:no-underline drop-shadow transition-colors"
           >
             About this site
           </a>
