@@ -1,5 +1,29 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+// Structured data for SEO
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is React Dead?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. React is actively maintained by Meta and has millions of downloads per month. It powers major websites including Facebook, Instagram, Netflix, and Airbnb. The framework receives regular updates and has a thriving ecosystem."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is React still popular in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. React continues to be one of the most popular JavaScript frameworks with over 200,000 GitHub stars and millions of npm downloads monthly. It remains the top choice for building user interfaces."
+      }
+    }
+  ]
+};
 ---
 
 <Layout>
@@ -79,4 +103,7 @@ import Layout from "../layouts/Layout.astro";
       </p>
     </footer>
   </main>
+
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 </Layout>
